@@ -1,4 +1,5 @@
 import {Todo} from '../model/Todo';
+import {setTimeout} from 'timers';
 
 export class TodoServices {
   listToDo: Array<Todo> = [];
@@ -6,15 +7,10 @@ export class TodoServices {
   constructor() {}
 
   createTodo(name) {
-    if (name !== '') {
-      const item: Todo = new Todo(name, false);
-      // this.listToDo.push(item);
-      return item;
-    }
+    return new Todo(name, false);
   }
 
   handleCreationOfTodo(todo) {
-    console.log(todo);
     this.listToDo.push(todo);
   }
 
@@ -29,12 +25,11 @@ export class TodoServices {
   }
 
   changeTodo(event) {
-    console.log(event);
     this.listToDo[event] = event;
-    console.log('**', this.listToDo);
   }
 
   getTodoList() {
+    console.log('XXXXXXXX')
     return this.listToDo;
   }
 }

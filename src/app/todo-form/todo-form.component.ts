@@ -18,9 +18,11 @@ export class TodoFormComponent implements OnInit {
   nameTodo = '';
 
   createTodo() {
-    const newTodo = this.todoServices.createTodo(this.nameTodo);
-    this.nameTodo = '';
-    this.todoCreated.emit(newTodo);
+    if (this.nameTodo !== '') {
+      const newTodo = this.todoServices.createTodo(this.nameTodo);
+      this.nameTodo = '';
+      this.todoCreated.emit(newTodo);
+    }
   }
 
   keyDownFunction(event) {
