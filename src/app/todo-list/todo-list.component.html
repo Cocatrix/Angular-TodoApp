@@ -1,6 +1,6 @@
 <div>
   <img src="http://simpleicon.com/wp-content/uploads/trash.svg" alt="" class="logoTrash" (click)="cleanList()">
-  <img src="../../assets/broom.svg" alt="brush" id="brush" (click)="ridOfTheDone()">
+  <img src="../../assets/broom.svg" alt="brush" id="brush" (click)="getRidOfDoneItems()">
 </div>
 
 <div>
@@ -11,7 +11,7 @@
 
   <ul *ngSwitchDefault>
     <li *ngFor="let toDo of getTodoList()">
-      <app-todo-item [toDo]="toDo" (todoModify)="changeTheTodo($event)"></app-todo-item>
+      <app-todo-item [toDo]="toDo" (todoModify)="changeTodo($event)"></app-todo-item>
     </li>
   </ul>
 </div>

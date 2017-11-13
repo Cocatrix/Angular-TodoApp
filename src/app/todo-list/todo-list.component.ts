@@ -20,12 +20,12 @@ export class TodoListComponent implements OnInit {
     this.todoServices.cleanList();
   }
 
-  ridOfTheDone() {
-    this.todoServices.ridOfTheDone();
+  getRidOfDoneItems() {
+    this.todoServices.getRidOfDoneItems();
   }
 
-  changeTheTodo(event) {
-    this.todoServices.changeTheTodo(event);
+  changeTodo(event) {
+    this.todoServices.changeTodo(event);
   }
 
   getTodoCount() {
@@ -36,9 +36,7 @@ export class TodoListComponent implements OnInit {
     return this.todoServices.getTodoList();
   }
 
-  constructor(public todoServices: TodoServices) { }
+  constructor(public todoServices: TodoServices) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

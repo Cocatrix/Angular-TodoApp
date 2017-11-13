@@ -4,14 +4,15 @@ export class TodoServices {
   listToDo: Array<Todo> = [];
 
   constructor() {}
-/*
+
   createTodo(name) {
-    if(name !== '') {
+    if (name !== '') {
       const item: Todo = new Todo(name, false);
-      this.listToDo.push(item);
+      // this.listToDo.push(item);
+      return item;
     }
   }
-*/
+
   handleCreationOfTodo(todo) {
     console.log(todo);
     this.listToDo.push(todo);
@@ -21,13 +22,13 @@ export class TodoServices {
     this.listToDo = [];
   }
 
-  ridOfTheDone() {
+  getRidOfDoneItems() {
     this.listToDo = this.listToDo.filter((item) => {
       return !item.isDone;
     });
   }
 
-  changeTheTodo(event) {
+  changeTodo(event) {
     console.log(event);
     this.listToDo[event] = event;
     console.log('**', this.listToDo);

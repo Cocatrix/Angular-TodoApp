@@ -1,4 +1,4 @@
 <div>
-  <input  id="nameTodo" [(ngModel)]="nameTodo" >
+  <input  id="nameTodo" [(ngModel)]="nameTodo" (keydown)="keyDownFunction($event)">
   <button (click)="createTodo()">Go</button>
 </div>

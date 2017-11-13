@@ -1,11 +1,15 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Todo} from "../model/Todo";
+import {TodoServices} from '../services/TodoServices';
 
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
   styleUrls: ['./todo-form.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    TodoServices
+  ]
 })
 export class TodoFormComponent implements OnInit {
 
@@ -14,17 +18,18 @@ export class TodoFormComponent implements OnInit {
   nameTodo = '';
 
   createTodo() {
-    if(this.nameTodo !== '') {
-      const item: Todo = new Todo(this.nameTodo, false);
-      console.log('* Created todo task :');
-      console.log(item);
-      this.todoCreated.emit(item);
+    const newTodo = this.todoServices.createTodo(this.nameTodo);
+    this.nameTodo = '';
+    this.todoCreated.emit(newTodo);
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.createTodo();
     }
   }
 
-  constructor() { }
+  constructor(public todoServices: TodoServices) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
