@@ -16,7 +16,7 @@ export class TodoFormComponent implements OnInit {
   createTodo() {
     if(this.nameTodo !== '') {
       const item: Todo = new Todo(this.nameTodo, false);
-      console.log('le todo en sortie :');
+      console.log('* Created todo task :');
       console.log(item);
       this.todoCreated.emit(item);
     }

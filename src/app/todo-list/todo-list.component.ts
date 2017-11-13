@@ -1,37 +1,42 @@
-import {Component, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
-import {Todo} from "../model/Todo";
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {TodoServices} from '../services/TodoServices';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    TodoServices
+  ]
 })
 export class TodoListComponent implements OnInit {
 
-  listToDo: Array<Todo> = [];
-
-  handleCreationofTodo(todo) {
-    console.log(todo);
-    this.listToDo.push(todo);
+  handleCreationOfTodo(todo) {
+    this.todoServices.handleCreationOfTodo(todo);
   }
 
   cleanList() {
-    this.listToDo = [];
+    this.todoServices.cleanList();
   }
+
   ridOfTheDone() {
-    this.listToDo = this.listToDo.filter((item) => {
-        return !item.isDone;
-    });
+    this.todoServices.ridOfTheDone();
   }
 
-  changeTheTodo(event){
-    console.log(event);
-    this.listToDo[event] = event;
-    console.log(this.listToDo);
+  changeTheTodo(event) {
+    this.todoServices.changeTheTodo(event);
   }
 
-  constructor() { }
+  getTodoCount() {
+    return this.todoServices.getTodoList().length;
+  }
+
+  getTodoList() {
+    return this.todoServices.getTodoList();
+  }
+
+  constructor(public todoServices: TodoServices) { }
 
   ngOnInit() {
   }
